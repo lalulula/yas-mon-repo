@@ -21,8 +21,8 @@ const experience = [
 
 export function ExperienceSection({ id }: ExperienceSectionProps) {
   return (
-    <section id={id} className="scroll-mt-8 min-h-[300px] md:min-h-[400px]">
-      <h2 className="text-2xl md:text-3xl font-bold  text-portfolio-gray-text mb-4 md:mb-6">
+    <section id={id} className="scroll-mt-8 min-h-[100px] md:min-h-[200px]">
+      <h2 className="text-2xl md:text-3xl font-bold  text-portfolio-gray mb-4 md:mb-6">
         Experience
       </h2>
       <div className="space-y-3 md:space-y-4">
