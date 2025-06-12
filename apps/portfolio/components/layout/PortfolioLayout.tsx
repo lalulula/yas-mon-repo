@@ -33,7 +33,7 @@ export function PortfolioLayout({ children }: PortfolioLayoutProps) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-portfolio-bg p-2 md:p-4">
+    <div className="min-h-screen p-2 md:p-4">
       <Header>
         <div className="flex h-full relative">
           {/* Mobile Menu Button */}
@@ -45,19 +45,18 @@ export function PortfolioLayout({ children }: PortfolioLayoutProps) {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <Menu className="h-5 w-5" />
-              <span>Toggle menu</span>
+              <span className="sr-only">Toggle menu</span>
             </Button>
           )}
 
           {/* Sidebar - hidden on mobile unless menu is open */}
           <div
-            className={`${
-              isMobile
-                ? isMobileMenuOpen
-                  ? "absolute inset-y-0 left-0 z-40 transform translate-x-0 transition-transform duration-200 ease-in-out"
-                  : "absolute inset-y-0 left-0 z-40 transform -translate-x-full transition-transform duration-200 ease-in-out"
-                : "relative"
-            }`}
+            className={`${isMobile
+              ? isMobileMenuOpen
+                ? "absolute inset-y-0 left-0 z-40 transform translate-x-0 transition-transform duration-200 ease-in-out"
+                : "absolute inset-y-0 left-0 z-40 transform -translate-x-full transition-transform duration-200 ease-in-out"
+              : "relative"
+              }`}
           >
             <AppSidebar
               onNavItemClick={() => isMobile && setIsMobileMenuOpen(false)}

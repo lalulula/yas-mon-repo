@@ -4,11 +4,11 @@ interface AboutSectionProps {
 
 export function AboutSection({ id }: AboutSectionProps) {
   return (
-    <section id={id} className="scroll-mt-8 min-h-[300px] md:min-h-[400px]">
-      <h2 className="text-2xl md:text-3xl font-bold  text-portfolio-gray-text mb-4 md:mb-6">
+    <section id={id} className="scroll-mt-8 min-h-[100px] md:min-h-[200px]">
+      <h2 className="text-2xl md:text-3xl font-bold  text-portfolio-gray mb-4 md:mb-6">
         About Me
       </h2>
-      <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6  text-portfolio-gray-text">
+      <div className="transparent-card p-4 md:p-6  text-portfolio-gray">
         <p className="text-base md:text-lg leading-relaxed">
           I am a passionate Front-End Developer with extensive experience in
           modern web technologies. I love creating beautiful, responsive, and

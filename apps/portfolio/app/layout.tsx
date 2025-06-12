@@ -1,5 +1,6 @@
 import { pretendard } from "@/lib/fonts";
 import "@workspace/ui/globals.css";
+import "./globals.css";
 
 export default function RootLayout({
   children,
@@ -8,7 +9,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${pretendard.variable} font-sans antialiased`}>
+      <body className={`${pretendard.variable} font-sans antialiased bg-portfolio-bg`}>
         {children}
       </body>
     </html>
