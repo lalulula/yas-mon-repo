@@ -32,14 +32,13 @@ export function SkillCard({ name, icon, color, level }: SkillCardProps) {
       <div className="text-3xl md:text-4xl mb-2 flex justify-center items-center">
         <span className={`${color}`}>{icon}</span>
       </div>
-      <p className="text-sm md:text-base text-portfolio-gray font-medium">{name}</p>
+      <p className="text-sm md:text-base text-portfolio-gray font-medium">
+        {name}
+      </p>
       <div className="absolute inset-0 bg-black/80 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
-        <div className="flex gap-1">
-          {renderStars()}
-        </div>
+        <div className="flex gap-1">{renderStars()}</div>
         <p className="text-white text-sm mt-2">Proficiency</p>
       </div>
     </div>
   );
 }
-
