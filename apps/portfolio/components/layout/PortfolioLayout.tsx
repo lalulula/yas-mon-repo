@@ -21,7 +21,6 @@ export function PortfolioLayout({ children }: PortfolioLayoutProps) {
   // Check if device is mobile
   useEffect(() => {
     const checkIfMobile = () => {
-      console.log("calling");
       setIsMobile(window.innerWidth < 768);
       if (window.innerWidth >= 768) {
         setIsMobileMenuOpen(false);
@@ -65,10 +64,11 @@ export function PortfolioLayout({ children }: PortfolioLayoutProps) {
 
           {/* Sidebar Overlay for mobile menu */}
           {isMobile && isMobileMenuOpen && (
+            // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
             <div
               className="fixed inset-0 bg-black/70 z-30"
               onClick={() => setIsMobileMenuOpen(false)}
-            ></div>
+            />
           )}
 
           {/* Main Content */}

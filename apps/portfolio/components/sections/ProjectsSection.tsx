@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion"
 import ProjectCard from "../ui/ProjectCard";
-
+import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
 interface ProjectsSectionProps {
   id: string;
 }
@@ -46,7 +47,14 @@ const containerVariants = {
 };
 
 export function ProjectsSection({ id }: ProjectsSectionProps) {
-  return (
+  const { t: translate } = useTranslation()
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return (mounted &&
     <section id={id} className="scroll-mt-8 min-h-[300px] md:min-h-[400px] py-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -55,7 +63,7 @@ export function ProjectsSection({ id }: ProjectsSectionProps) {
         className="mb-8"
       >
         <h2 className="text-2xl md:text-3xl text-portfolio-gray-default font-medium mb-4 md:mb-6">
-          Projects
+          {translate('projects.title')}
         </h2>
       </motion.div>
 

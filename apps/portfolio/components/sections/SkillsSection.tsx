@@ -17,16 +17,25 @@ import { PiSlackLogo } from 'react-icons/pi';
 import { FiFigma } from 'react-icons/fi';
 import { FaPeopleGroup } from 'react-icons/fa6';
 import { SkillEnum } from '@/lib/enums/enums.enum';
+import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 
 interface SkillsSectionProps {
   id: string;
 }
 
 export function SkillsSection({ id }: SkillsSectionProps) {
-  return (
+  const { t: translate } = useTranslation()
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return (mounted &&
     <section id={id} className="scroll-mt-8 py-6 md:py-10">
-        <h2 className="text-2xl md:text-3xl text-portfolio-gray-default font-medium mb-4 md:mb-6">
-        Skills
+      <h2 className="text-2xl md:text-3xl text-portfolio-gray-default font-medium mb-4 md:mb-6">
+        {translate('skills.title')}
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {skills.map((skill, index) => (

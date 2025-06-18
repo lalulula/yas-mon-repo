@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ExperienceCard } from "../ui/ExperienceCard";
-
+import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 interface ExperienceSectionProps {
   id: string;
 }
@@ -67,7 +68,14 @@ const containerVariants = {
 };
 
 export function ExperienceSection({ id }: ExperienceSectionProps) {
-  return (
+  const { t: translate } = useTranslation()
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return (mounted &&
     <section id={id} className="scroll-mt-8 min-h-[100px] md:min-h-[200px] py-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -77,9 +85,11 @@ export function ExperienceSection({ id }: ExperienceSectionProps) {
       >
         <div className="flex flex-row items-end gap-4">
           <h2 className="text-2xl md:text-3xl font-medium text-portfolio-gray-default">
-            Experience
+            {translate('experience.title')}
           </h2>
-          <p className="text-portfolio-gray-transparent italic text-[11px] md:text-[13px]">Click on the company logo to view the company website</p>
+          <p className="text-portfolio-gray-transparent italic text-[11px] md:text-[13px]">
+            {translate('experience.click_logo')}
+          </p>
         </div>
       </motion.div>
 

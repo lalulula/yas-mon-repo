@@ -1,5 +1,7 @@
-import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
+"use client"
 
+import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 interface SkillCardProps {
   name: string;
   icon: React.ReactNode;
@@ -8,6 +10,7 @@ interface SkillCardProps {
 }
 
 export function SkillCard({ name, icon, color, level }: SkillCardProps) {
+  const { t: translate } = useTranslation()
   const renderStars = () => {
     const stars = [];
     const fullStars = Math.floor(level);
@@ -37,7 +40,9 @@ export function SkillCard({ name, icon, color, level }: SkillCardProps) {
       </p>
       <div className="absolute inset-0 bg-black/80 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
         <div className="flex gap-1">{renderStars()}</div>
-        <p className="text-[oklch(0.9851_0_0)] text-sm mt-2">Proficiency</p>
+        <p className="text-[oklch(0.9851_0_0)] text-sm mt-2">
+          {translate('skills.proficiency')}
+        </p>
       </div>
     </div>
   );
