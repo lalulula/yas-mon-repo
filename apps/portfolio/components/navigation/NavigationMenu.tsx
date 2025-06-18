@@ -63,14 +63,14 @@ export function NavigationMenu({ onItemClick }: NavigationMenuProps) {
   return (
     <nav className="space-y-2">
       {navigationItems.map((item) => (
+        // biome-ignore lint/a11y/useButtonType: <explanation>
         <button
           key={item.id}
           onClick={() => scrollToSection(item.id)}
-          className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-left ${
-            activeSection === item.id
-              ? "text-white bg-white/20"
-              : "text-white/70 hover:text-white hover:bg-white/10"
-          }`}
+          className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-left ${activeSection === item.id
+            ? "text-sidebar-activated bg-white/10"
+            : "text-sidebar-deactivated hover:text-white hover:bg-white/10"
+            }`}
         >
           <item.icon className="w-4 h-4 flex-shrink-0" />
           <span>{item.label}</span>

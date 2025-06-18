@@ -1,8 +1,8 @@
-"use client"
+'use client';
 
-import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
-import { createPortal } from "react-dom";
+import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
+import { createPortal } from 'react-dom';
 
 interface ProjectDetailsModalProps {
   isOpen: boolean;
@@ -10,6 +10,7 @@ interface ProjectDetailsModalProps {
   title: string;
   description: string;
   technologies: string[];
+  githubLink: string;
 }
 
 export function ProjectDetailsModal({
@@ -17,7 +18,8 @@ export function ProjectDetailsModal({
   onClose,
   title,
   description,
-  technologies
+  technologies,
+  githubLink
 }: ProjectDetailsModalProps) {
   if (typeof window === 'undefined') return null;
 
@@ -55,19 +57,24 @@ export function ProjectDetailsModal({
               </p>
               <div className="flex flex-wrap gap-2">
                 {technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1.5 rounded-full text-sm font-medium bg-white/10 backdrop-blur-sm border shadow-sm"
-                  >
+                  <span key={tech} className=" py-1.5 text-xs font-medium">
                     {tech}
                   </span>
                 ))}
               </div>
             </div>
+            <a
+              href={githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-portfolio-gray-default hover:text-portfolio-gray-hover text-xs underline italic transition-colors"
+            >
+              View on GitHub
+            </a>
           </motion.div>
         </motion.div>
       )}
     </AnimatePresence>,
     document.body
   );
-} 
+}

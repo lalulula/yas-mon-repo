@@ -10,9 +10,11 @@ interface ProjectCardProps {
   title: string;
   description: string;
   technologies: string[];
+  detailDescription: string;
+  githubLink: string;
 }
 
-export default function ProjectCard({ title, description, technologies }: ProjectCardProps) {
+export default function ProjectCard({ title, description, technologies, detailDescription, githubLink }: ProjectCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -71,8 +73,8 @@ export default function ProjectCard({ title, description, technologies }: Projec
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05 }}
-                  className={`px-3 py-1.5 rounded-full text-xs md:text-sm font-medium backdrop-blur-sm 
-                    border shadow-lg hover:shadow-xl transition-all duration-300 group/chip ${getTechChipClasses(tech)}`}
+                  className={`px-3 py-1.5 rounded-full text-portfolio-gray-default  hover:text-portfolio-gray-hover  text-xs md:text-sm font-medium backdrop-blur-sm 
+                    border shadow-lg duration-300 group/chip ${getTechChipClasses(tech)}`}
                 >
                   {tech}
                 </motion.span>
@@ -86,8 +88,9 @@ export default function ProjectCard({ title, description, technologies }: Projec
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         title={title}
-        description={description}
+        description={detailDescription}
         technologies={technologies}
+        githubLink={githubLink}
       />
     </>
   );

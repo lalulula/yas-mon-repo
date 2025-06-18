@@ -12,13 +12,25 @@ const projects = [
     title: "Portfolio Website",
     description: "A modern, responsive portfolio built with Next.js and Tailwind CSS",
     technologies: ["Next.js", "React", "Tailwind"],
-    githubLink: "https://github.com/your-repo/portfolio-website"
+    githubLink: "https://github.com/your-repo/portfolio-website",
+    detailDescription: "This is a detail description of the project"
+
   },
   {
-    title: "E-commerce App",
-    description: "Full-stack e-commerce solution with payment integration",
+    title: "[i-ESG]MGT-Management Module",
+    description: "A management module for the i-ESG platform",
     technologies: ["Vue.js", "Node.js", "MongoDB"],
-    githubLink: "https://github.com/your-repo/portfolio-website"
+    githubLink: "https://github.com/your-repo/portfolio-website",
+    detailDescription: "This is a detail description of the project"
+
+  }
+  ,
+  {
+    title: "[i-ESG]PDF download",
+    description: "A PDF download module for the i-ESG platform",
+    technologies: ["Vue.js", "Node.js", "MongoDB"],
+    githubLink: "https://github.com/your-repo/portfolio-website",
+    detailDescription: "This is a detail description of the project"
   }
 ];
 

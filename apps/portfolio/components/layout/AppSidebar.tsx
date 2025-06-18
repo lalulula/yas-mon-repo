@@ -18,6 +18,7 @@ export function AppSidebar({ onNavItemClick }: AppSidebarProps) {
     <aside className="w-64 bg-black/20 backdrop-blur-sm border-r border-white/10 flex-shrink-0 h-full">
       <div className="p-6 h-full flex flex-col overflow-y-auto">
         <div className="mb-8">
+          {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
           <h3
             className="text-white/80 text-lg font-medium mb-4 cursor-pointer hover:text-white transition-colors"
             onClick={scrollToTop}

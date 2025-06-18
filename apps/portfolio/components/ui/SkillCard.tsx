@@ -37,7 +37,7 @@ export function SkillCard({ name, icon, color, level }: SkillCardProps) {
       </p>
       <div className="absolute inset-0 bg-black/80 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
         <div className="flex gap-1">{renderStars()}</div>
-        <p className="text-white text-sm mt-2">Proficiency</p>
+        <p className="text-[oklch(0.9851_0_0)] text-sm mt-2">Proficiency</p>
       </div>
     </div>
   );

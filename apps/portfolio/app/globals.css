@@ -16,10 +16,12 @@
   --text-gray-50: oklch(0.666 0.012 243.74);
   --text-gray-40: oklch(0.7444 0.0099 242.89); /* helper*/
   --text-gray-30: oklch(0.8897 0.0043 236.5);
-  --text-gray-20: oklch(0.9662 0.0034 247.86); /* sidebar activated*/
-  --text-gray-10: oklch(0.9851 0 0); /* sidebar deactivated*/
+  --text-gray-20: oklch(0.9662 0.0034 247.86);
+  --text-gray-10: oklch(0.9851 0 0);
+  --text-gray-10-transparent: oklch(0.9851 0 0 / 50%); /* sidebar deactivated*/
+  --text-white: oklch(1 0 0); /* sidebar activated*/
 
-  --modal-bg: #e7e7e7;
+  --modal-bg: oklch(0.928 0 0);
 }
 
 body {
@@ -61,6 +63,12 @@ html {
   }
   .text-portfolio-gray-transparent {
     color: var(--text-gray-40);
+  }
+  .text-sidebar-activated {
+    color: var(--text-white);
+  }
+  .text-sidebar-deactivated {
+    color: var(--text-gray-10-transparent);
   }
 
   .bg-portfolio-bg {
