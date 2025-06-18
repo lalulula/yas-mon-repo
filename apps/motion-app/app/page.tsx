@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -171,7 +171,12 @@ export default function Component() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [isCarouselPaused, setIsCarouselPaused] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -180,6 +185,11 @@ export default function Component() {
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"])
+
+  // Don't render animations until mounted
+  if (!mounted) {
+    return null
+  }
 
   return (
     <motion.div
@@ -210,7 +220,7 @@ export default function Component() {
               }}
               transition={{
                 duration: 3,
-                repeat: Number.POSITIVE_INFINITY,
+                repeat: mounted ? Number.POSITIVE_INFINITY : 0,
                 ease: "linear",
               }}
             >
@@ -262,9 +272,9 @@ export default function Component() {
           </motion.div>
 
           <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" variants={containerVariants}>
-            {services.map((service, index) => (
+            {services.map((service) => (
               <motion.div
-                key={index}
+                key={service.title}
                 variants={itemVariants}
                 whileHover={{
                   scale: 1.05,
@@ -311,15 +321,14 @@ export default function Component() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <motion.div className="space-y-4" layout>
-              {projects.map((project, index) => (
+              {projects.map((project) => (
                 <motion.div
-                  key={index}
-                  className={`p-4 rounded-lg cursor-pointer transition-all ${
-                    selectedProject === index
-                      ? "bg-white/20 border-l-4 border-purple-400"
-                      : "bg-white/5 hover:bg-white/10"
-                  }`}
-                  onClick={() => setSelectedProject(index)}
+                  key={project.title}
+                  className={`p-4 rounded-lg cursor-pointer transition-all ${selectedProject === projects.indexOf(project)
+                    ? "bg-white/20 border-l-4 border-purple-400"
+                    : "bg-white/5 hover:bg-white/10"
+                    }`}
+                  onClick={() => setSelectedProject(projects.indexOf(project))}
                   whileHover={{ x: 10 }}
                   whileTap={{ scale: 0.98 }}
                   layout
@@ -333,7 +342,7 @@ export default function Component() {
                     </div>
                     <motion.div
                       animate={{
-                        rotate: selectedProject === index ? 90 : 0,
+                        rotate: selectedProject === projects.indexOf(project) ? 90 : 0,
                       }}
                       transition={{ duration: 0.2 }}
                     >
@@ -520,7 +529,7 @@ export default function Component() {
               animate={{ rotate: isCarouselPaused ? 0 : 360 }}
               transition={{
                 duration: 20,
-                repeat: Number.POSITIVE_INFINITY,
+                repeat: mounted ? Number.POSITIVE_INFINITY : 0,
                 ease: "linear",
               }}
               onHoverStart={() => setIsCarouselPaused(true)}
@@ -559,8 +568,8 @@ export default function Component() {
                     >
                       <span className="text-2xl mb-1">{item.icon}</span>
                       <span className="text-xs font-medium text-center px-1 leading-tight">
-                        {item.title.split(" ").map((word, i) => (
-                          <div key={i}>{word}</div>
+                        {item.title.split(" ").map((word) => (
+                          <div key={`${item.id}-${word}`}>{word}</div>
                         ))}
                       </span>
                     </motion.div>
@@ -607,18 +616,18 @@ export default function Component() {
           </motion.div>
 
           <div className="relative h-96 flex items-center justify-center">
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((testimonial) => (
               <motion.div
-                key={index}
+                key={testimonial.name}
                 drag
                 dragConstraints={{ left: -200, right: 200, top: -100, bottom: 100 }}
                 dragElastic={0.1}
                 whileDrag={{ scale: 1.1, rotate: 5, zIndex: 10 }}
                 className="absolute w-80"
                 initial={{
-                  x: (index - 1) * 100,
-                  y: index * 20,
-                  rotate: (index - 1) * 5,
+                  x: (testimonials.indexOf(testimonial) - 1) * 100,
+                  y: testimonials.indexOf(testimonial) * 20,
+                  rotate: (testimonials.indexOf(testimonial) - 1) * 5,
                 }}
                 whileHover={{ scale: 1.05, zIndex: 5 }}
               >
@@ -638,7 +647,7 @@ export default function Component() {
                     <div className="flex">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <motion.div
-                          key={i}
+                          key={`${testimonial.name}-star-${i}`}
                           initial={{ opacity: 0, scale: 0 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: i * 0.1 }}
@@ -666,31 +675,31 @@ export default function Component() {
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
-              { number: 150, label: "Projects Completed", suffix: "+" },
-              { number: 98, label: "Client Satisfaction", suffix: "%" },
-              { number: 5, label: "Years Experience", suffix: "" },
-            ].map((stat, index) => (
+              { id: 'projects', number: 150, label: "Projects Completed", suffix: "+" },
+              { id: 'satisfaction', number: 98, label: "Client Satisfaction", suffix: "%" },
+              { id: 'experience', number: 5, label: "Years Experience", suffix: "" },
+            ].map((stat) => (
               <motion.div
-                key={index}
+                key={stat.id}
                 className="text-white"
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{}}
-                transition={{ delay: index * 0.2, type: "spring", stiffness: 100 }}
+                transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
               >
                 <motion.div
                   className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{}}
-                  transition={{ delay: index * 0.2 + 0.5 }}
+                  transition={{ delay: 0.2 + 0.5 }}
                 >
                   <motion.span
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{}}
                     transition={{
-                      delay: index * 0.2 + 0.7,
+                      delay: 0.2 + 0.7,
                       duration: 1,
                     }}
                   >
