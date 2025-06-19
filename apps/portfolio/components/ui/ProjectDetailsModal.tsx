@@ -10,7 +10,9 @@ interface ProjectDetailsModalProps {
   title: string;
   description: string;
   technologies: string[];
-  githubLink: string;
+  githubLink?: string;
+  deploymentLink?: string;
+  refPath?: string;
 }
 
 export function ProjectDetailsModal({
@@ -19,7 +21,9 @@ export function ProjectDetailsModal({
   title,
   description,
   technologies,
-  githubLink
+  githubLink,
+  deploymentLink,
+  refPath
 }: ProjectDetailsModalProps) {
   if (typeof window === 'undefined') return null;
 

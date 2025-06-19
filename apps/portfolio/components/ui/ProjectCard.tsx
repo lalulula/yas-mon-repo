@@ -11,10 +11,12 @@ interface ProjectCardProps {
   description: string;
   technologies: string[];
   detailDescription: string;
-  githubLink: string;
+  githubLink?: string;
+  deploymentLink?: string;
+  refPath?: string;
 }
 
-export default function ProjectCard({ title, description, technologies, detailDescription, githubLink }: ProjectCardProps) {
+export default function ProjectCard({ title, description, technologies, detailDescription, githubLink, deploymentLink, refPath }: ProjectCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -91,6 +93,8 @@ export default function ProjectCard({ title, description, technologies, detailDe
         description={detailDescription}
         technologies={technologies}
         githubLink={githubLink}
+        deploymentLink={deploymentLink}
+        refPath={refPath}
       />
     </>
   );
