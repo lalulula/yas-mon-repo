@@ -1,21 +1,23 @@
 "use client"
 
 import Image from "next/image";
-
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 interface ExperienceCardProps {
   company: string;
   position: string;
   period: string;
   logo: string;
   link: string;
-  description?: string;
-  details?: Array<{
-    title: string;
-    description: string;
-  }>;
+  description_en: string;
+  description_ko: string;
+
 }
 
-export function ExperienceCard({ company, position, period, logo, link }: ExperienceCardProps) {
+export function ExperienceCard({ company, position, period, logo, link, description_en, description_ko }: ExperienceCardProps) {
+  const { i18n } = useTranslation();
+
+
   return (
     <button
       type="button"
@@ -25,7 +27,7 @@ export function ExperienceCard({ company, position, period, logo, link }: Experi
 
       <div className="relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div className="flex items-center space-x-4">
-          <div className="relative w-15 h-15 md:w-20 md:h-20">
+          <div className="relative w-15 h-15 md:w-20 md:h-20 flex-shrink-0">
             <a
               href={link}
               target="_blank"
@@ -41,16 +43,19 @@ export function ExperienceCard({ company, position, period, logo, link }: Experi
               />
             </a>
           </div>
-          <div>
+          <div className="flex-1 min-w-0 w-64 md:w-128 lg:w-160">
             <h3 className="font-medium text-sm md:text-base text-portfolio-gray-default-hover">
               {company}
             </h3>
             <p className="font-regular text-portfolio-gray-default text-xs md:text-sm">
               {position}
             </p>
+            <p className="mt-2 font-regular text-portfolio-gray-default text-xs md:text-sm break-words whitespace-break-spaces">
+              {i18n.language === "ko" ? description_ko : description_en}
+            </p>
           </div>
         </div>
-        <div className="text-left sm:text-right">
+        <div className="text-left sm:text-right flex-shrink-0 w-20 md:w-24">
           <p className="text-portfolio-gray-default text-[10px] md:text-xs font-thin italic">
             {period}
           </p>
