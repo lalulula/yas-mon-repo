@@ -1,5 +1,6 @@
 import { NavigationMenu } from "../navigation/NavigationMenu";
 import { SocialLinks } from "../navigation/SocialLinks";
+import { LanguageToggle } from "../ui/LanguageToggle";
 
 interface AppSidebarProps {
   onNavItemClick?: () => void;
@@ -17,6 +18,10 @@ export function AppSidebar({ onNavItemClick }: AppSidebarProps) {
   return (
     <aside className="w-64 bg-black/20 backdrop-blur-sm border-r border-white/10 flex-shrink-0 h-full">
       <div className="p-6 h-full flex flex-col overflow-y-auto">
+        <div className="mb-6">
+          <LanguageToggle />
+        </div>
+
         <div className="mb-8">
           {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
           <h3
