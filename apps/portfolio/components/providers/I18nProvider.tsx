@@ -1,6 +1,6 @@
 "use client";
 
-import i18n from "@/lib/i18n/i18n";
+import i18n from "@/src/data-access/i18n/i18n";
 import type { PropsWithChildren } from "react";
 import { I18nextProvider } from "react-i18next";
 

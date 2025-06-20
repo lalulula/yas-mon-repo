@@ -1,6 +1,6 @@
 "use client"
 
-import { getTechChipClasses } from "@/lib/utils/colors";
+import { getTechChipClasses } from "@/src/data-access/utils/colors";
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { useState } from "react";
@@ -18,20 +18,12 @@ interface ProjectCardProps {
 export default function ProjectCard({ title, description, technologies, detailDescription, githubLink, refLink }: ProjectCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      setIsModalOpen(true);
-    }
-  };
-
   return (
     <>
       <button
         type="button"
-        className="w-full text-left"
+        className="w-full text-left h-full"
         onClick={() => setIsModalOpen(true)}
-        onKeyDown={handleKeyDown}
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -41,7 +33,7 @@ export default function ProjectCard({ title, description, technologies, detailDe
             scale: 1.02,
             transition: { duration: 0.2 }
           }}
-          className="transparent-card-overlay p-4 md:p-6 text-portfolio-gray-default group relative overflow-hidden h-[160px] md:h-[200px] flex flex-col"
+          className="transparent-card-overlay p-4 md:p-6 text-portfolio-gray-default group relative overflow-hidden h-full flex flex-col"
         >
           <motion.div
             className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -74,7 +66,7 @@ export default function ProjectCard({ title, description, technologies, detailDe
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05 }}
-                  className={`px-3 py-1.5 rounded-full text-portfolio-gray-default  hover:text-portfolio-gray-hover  text-xs md:text-sm font-medium backdrop-blur-sm 
+                  className={`px-2.5 py-1 rounded-full text-portfolio-gray-default  hover:text-portfolio-gray-hover  text-[10px] md:text-xs font-medium backdrop-blur-sm 
                     border shadow-lg duration-300 group/chip ${getTechChipClasses(tech)}`}
                 >
                   {tech}

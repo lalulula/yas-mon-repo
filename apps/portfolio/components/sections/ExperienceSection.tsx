@@ -4,36 +4,12 @@ import { motion } from "framer-motion";
 import { ExperienceCard } from "../ui/ExperienceCard";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
+import { experience } from "@/src/dto/constants/exp.consts";
 interface ExperienceSectionProps {
   id: string;
 }
 
-const experience = [
-  {
-    company: "i-ESG",
-    position: "Frontend Developer",
-    period: "Apr 2024 - Present",
-    logo: "/assets/image/i-esg_logo.png",
-    link: "https://i-esg.io/",
-    translationKey: "i_esg"
-  },
-  {
-    company: "IDCITI",
-    position: "Software Engineer",
-    period: "Oct 2022 - 2023",
-    logo: "/assets/image/idciti_logo.png",
-    link: "https://idciti.com/",
-    translationKey: "idciti"
-  },
-  {
-    company: "Teaching Assistant",
-    position: "Teaching Assistant",
-    period: "Mar 2022 - Sep 2022",
-    logo: "/assets/image/sbu_logo.png",
-    link: "https://www.stonybrook.edu/commcms/registrar/registration/schedules.php",
-    translationKey: "ta"
-  }
-];
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -60,7 +36,7 @@ export function ExperienceSection({ id }: ExperienceSectionProps) {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ margin: "-100px" }}
-        className="mb-8"
+        className="mb-4"
       >
         <div className="flex flex-row items-end gap-4">
           <h2 className="text-2xl md:text-3xl font-medium text-portfolio-gray-default">
