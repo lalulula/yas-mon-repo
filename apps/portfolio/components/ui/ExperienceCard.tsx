@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 interface ExperienceCardProps {
   company: string;

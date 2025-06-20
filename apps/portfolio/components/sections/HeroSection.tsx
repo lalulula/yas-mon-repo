@@ -4,16 +4,36 @@ import { Button } from '@workspace/ui/components/button';
 import { Download } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+
+// List of images in the ya directory - moved outside component to prevent recreation
+const images = [
+  '/assets/image/ya/DSC07362.jpeg',
+  '/assets/image/ya/IMG_5712.JPG',
+  '/assets/image/ya/IMG_7099.jpg'
+];
 
 export function HeroSection() {
   const { t: translate } = useTranslation();
   const [mounted, setMounted] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Image carousel effect
+  useEffect(() => {
+    if (!mounted) return;
 
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [mounted]);
 
   return (mounted &&
     <div id="top">
@@ -32,16 +52,25 @@ export function HeroSection() {
             </Button>
           </div>
 
-          <div className="w-88 h-72 bg-white/10 rounded-2xl flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-48 h-48 bg-white/20 rounded-sm mx-auto mb-4">
-                Profile image here
+          <div className="w-full lg:w-88 h-48 md:h-72 bg-white/10 rounded-2xl flex items-center justify-center overflow-hidden relative">
+            {images.map((image, index) => (
+              <div
+                key={image}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+              >
+                <Image
+                  src={image}
+                  alt={`Profile image ${index + 1}`}
+                  fill
+                  className="object-cover rounded-2xl"
+                  priority={index === 0}
+                />
               </div>
-              <div className="space-y-2">
-                <div className="px-2 py-2 bg-white/20 rounded text-sm font-medium">
-                  Yunah Kim
-                </div>
-              </div>
+            ))}
+            {/* Image counter indicator */}
+            <div className="absolute bottom-4 right-4 bg-black/50 text-white text-xs px-2 py-1 rounded-full">
+              {currentImageIndex + 1} / {images.length}
             </div>
           </div>
         </div>

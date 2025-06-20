@@ -6,3 +6,12 @@ export interface Project {
   githubLink?: string;
   refLink?: string;
 }
+
+export interface Experience {
+  company: string;
+  position: string;
+  period: string;
+  logo: string;
+  link: string;
+  translationKey: string;
+}
