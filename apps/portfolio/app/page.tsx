@@ -8,6 +8,7 @@ export default function Page() {
   return (
     <PortfolioLayout>
       <>
+      {/* test comment */}
         <AboutSection id="about" />
         <SkillsSection id="skills" />
         <ExperienceSection id="experience" />
