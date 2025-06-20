@@ -4,8 +4,7 @@ export const projects: Project[] = [
   {
     title: 'Portfolio Website',
     technologies: ['Next.js', 'React', 'Tailwind', 'i18n'],
-    translationKey: 'portfolio',
-    deploymentLink: ''
+    translationKey: 'portfolio'
   },
   {
     title: '[i-ESG]MGT - Management Module',
@@ -37,8 +36,8 @@ export const projects: Project[] = [
     title: 'Marketing Data Research Assistant',
     technologies: ['Python', 'AzureOpenAI', 'TavilyAPI', 'PerplexityAPI'],
     translationKey: 'mkt_data_reasearch_assistant',
-    githubLink: 'https://github.com/jisu-park/mkt_data_reasearch_assistant',
-    refPath: ''
+    refLink:
+      'https://drive.google.com/file/d/1_WAnestCTxP1zlQWwfZ2D5pV9EKc7IzR/view?usp=sharing'
   },
   {
     title: 'Travel Assistant',
@@ -51,14 +50,15 @@ export const projects: Project[] = [
     ],
     translationKey: 'travel_assistant',
     githubLink: 'https://github.com/lalulula/itinerary-assistant',
-    refPath: ''
+    refLink:
+      'https://drive.google.com/file/d/1I0HrYZSQS7pDPWhj95Nb6JMqJsPoQGlv/view?usp=sharing'
   },
   {
     title: 'AIPrompts',
     technologies: ['Next.js', 'React', 'Tailwind', 'Vercel', 'SSO', 'MongoDB'],
     translationKey: 'ai_prompts',
     githubLink: 'https://github.com/lalulula/AIPromptsRebuild',
-    deploymentLink: 'https://ai-prompts-rebuild.vercel.app/'
+    refLink: 'https://ai-prompts-rebuild.vercel.app/'
   },
   {
     title: 'Map Book',
@@ -71,12 +71,14 @@ export const projects: Project[] = [
     technologies: ['Next.js', 'React', 'MUI', 'Lottie'],
     translationKey: 'bite_print',
     githubLink: 'https://github.com/lalulula/NaengJangGo',
-    refPath: 'https://devpost.com/software/biteprint'
+    refLink: 'https://devpost.com/software/biteprint'
   },
   {
     title: 'FlavorFile',
     technologies: ['Flutter', 'Firebase', 'MongoDB'],
     translationKey: 'flavor_file',
-    githubLink: 'https://github.com/lalulula/FlavorFile'
+    githubLink: 'https://github.com/lalulula/FlavorFile',
+    refLink:
+      'https://drive.google.com/file/d/1Ev4Hw1UKZUwwrK-5rMCjwavtqF5tyDGQ/view?usp=drive_link'
   }
 ];

@@ -59,6 +59,8 @@ export default {
   // Projects Section
   projects: {
     title: 'Projects',
+    github: 'View on GitHub',
+    demo: 'Check Demo',
     portfolio: {
       description:
         'A modern, responsive portfolio built with Next.js and Tailwind CSS',

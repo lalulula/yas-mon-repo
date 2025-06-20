@@ -4,6 +4,5 @@ export interface Project {
   technologies: string[];
   translationKey: string;
   githubLink?: string;
-  deploymentLink?: string;
-  refPath?: string;
+  refLink?: string;
 }

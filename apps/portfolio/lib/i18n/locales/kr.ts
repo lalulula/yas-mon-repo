@@ -59,6 +59,8 @@ export default {
   // Projects Section
   projects: {
     title: '프로젝트',
+    github: 'GitHub 보기',
+    demo: '데모 확인',
     portfolio: {
       description: 'Next.js와 Tailwind CSS로 구축된 모던하고 반응형 포트폴리오',
       detailDescription:

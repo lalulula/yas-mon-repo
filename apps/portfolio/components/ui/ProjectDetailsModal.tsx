@@ -2,7 +2,10 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
 
 interface ProjectDetailsModalProps {
   isOpen: boolean;
@@ -11,8 +14,7 @@ interface ProjectDetailsModalProps {
   description: string;
   technologies: string[];
   githubLink?: string;
-  deploymentLink?: string;
-  refPath?: string;
+  refLink?: string;
 }
 
 export function ProjectDetailsModal({
@@ -22,12 +24,17 @@ export function ProjectDetailsModal({
   description,
   technologies,
   githubLink,
-  deploymentLink,
-  refPath
+  refLink
 }: ProjectDetailsModalProps) {
   if (typeof window === 'undefined') return null;
+  const { t: translate } = useTranslation()
+  const [mounted, setMounted] = useState(false)
 
-  return createPortal(
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  return mounted && createPortal(
     <AnimatePresence>
       {isOpen && (
         <motion.div
@@ -56,7 +63,7 @@ export function ProjectDetailsModal({
               <h2 className="text-2xl font-bold text-portfolio-gray-default-hover mb-4">
                 {title}
               </h2>
-              <p className="text-base text-portfolio-gray-default mb-6">
+              <p className="text-base text-portfolio-gray-default mb-6 whitespace-pre-line">
                 {description}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -67,14 +74,23 @@ export function ProjectDetailsModal({
                 ))}
               </div>
             </div>
-            <a
+            {refLink && <a
+              href={refLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-portfolio-gray-default hover:text-portfolio-gray-hover text-xs underline italic transition-colors"
+            >
+              {translate('projects.demo')}
+            </a>}
+            <br />
+            {githubLink && <a
               href={githubLink}
               target="_blank"
               rel="noopener noreferrer"
               className="text-portfolio-gray-default hover:text-portfolio-gray-hover text-xs underline italic transition-colors"
             >
-              View on GitHub
-            </a>
+              {translate('projects.github')}
+            </a>}
           </motion.div>
         </motion.div>
       )}
