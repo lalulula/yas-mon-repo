@@ -1,4 +1,4 @@
-import type { Project } from '@/src/dto';
+import type { Project } from '@/src/dto/interface';
 
 export const projects: Project[] = [
   {

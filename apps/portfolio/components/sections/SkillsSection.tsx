@@ -11,12 +11,11 @@ import {
 import { SiFramer, SiJira, SiTypescript, SiLangchain } from 'react-icons/si';
 import { motion } from 'framer-motion';
 import { SkillCard } from '../ui/SkillCard';
-import { TbBrandNextjs } from 'react-icons/tb';
 import { RiNextjsLine, RiNotionFill, RiTailwindCssFill } from 'react-icons/ri';
 import { PiSlackLogo } from 'react-icons/pi';
 import { FiFigma } from 'react-icons/fi';
 import { FaPeopleGroup } from 'react-icons/fa6';
-import { SkillEnum } from '@/lib/enums/enums.enum';
+import { SkillEnum } from '@/src/dto/enums/enums.enum';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 
@@ -33,17 +32,23 @@ export function SkillsSection({ id }: SkillsSectionProps) {
   }, []);
 
   return (mounted &&
-    <section id={id} className="scroll-mt-8 py-6 md:py-10">
-      <h2 className="text-2xl md:text-3xl text-portfolio-gray-default font-medium mb-4 md:mb-6">
-        {translate('skills.title')}
-      </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+    <section id={id} className="scroll-mt-4 py-6 md:py-10">
+      <div className="flex flex-row items-end gap-4 ">
+        <h2 className="text-2xl md:text-3xl text-portfolio-gray-default font-medium mb-4 md:mb-6">
+          {translate('skills.title')}
+        </h2>
+        <p className="text-sm text-portfolio-gray-transparent mb-4 md:hidden italic">
+          {translate('skills.mobile_helper_text')}
+        </p></div>
+
+      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 items-stretch">
         {skills.map((skill, index) => (
           <motion.div
             key={skill.name}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05 }}
+            className="h-full"
           >
             <SkillCard
               name={skill.name}

@@ -35,13 +35,13 @@ export function PortfolioLayout({ children }: PortfolioLayoutProps) {
     <div className="min-h-screen p-2 md:p-4">
       <Header>
         <div className="flex h-full relative">
-          {/* Mobile Menu Button */}
-          {isMobile && (
+          {/* Mobile Menu Button - only show when sidebar is closed */}
+          {isMobile && !isMobileMenuOpen && (
             <Button
               variant="ghost"
               size="icon"
               className="absolute top-4 left-4 z-50 bg-black/20 text-white hover:bg-black/30"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={() => setIsMobileMenuOpen(true)}
             >
               <Menu className="h-5 w-5" />
               <span className="sr-only">Toggle menu</span>
@@ -59,6 +59,8 @@ export function PortfolioLayout({ children }: PortfolioLayoutProps) {
           >
             <AppSidebar
               onNavItemClick={() => isMobile && setIsMobileMenuOpen(false)}
+              onCloseMenu={() => setIsMobileMenuOpen(false)}
+              isMobile={isMobile}
             />
           </div>
 
@@ -66,13 +68,13 @@ export function PortfolioLayout({ children }: PortfolioLayoutProps) {
           {isMobile && isMobileMenuOpen && (
             // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
             <div
-              className="fixed inset-0 bg-black/70 z-30"
+              className="fixed inset-0 bg-black/70 z-30 pointer-events-auto touch-none"
               onClick={() => setIsMobileMenuOpen(false)}
             />
           )}
 
           {/* Main Content */}
-          <main className="flex-1 overflow-y-auto overflow-x-hidden h-full scroll-smooth">
+          <main className={`flex-1 overflow-y-auto overflow-x-hidden h-full scroll-smooth relative ${isMobile && isMobileMenuOpen ? 'z-20' : 'z-10'}`}>
             <div
               className={`p-4 md:p-8 space-y-8 md:space-y-12 ${isMobile ? "pt-16" : ""}`}
             >

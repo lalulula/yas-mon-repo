@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import ProjectCard from "../ui/ProjectCard";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
-import { projects } from "@/lib/constants/project-lists.const";
+import { projects } from "@/src/dto/constants/project-lists.const";
 interface ProjectsSectionProps {
   id: string;
 }
@@ -40,11 +40,16 @@ export function ProjectsSection({ id }: ProjectsSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ margin: "-100px" }}
-          className="mb-8"
+          className="mb-4"
         >
-          <h2 className="text-2xl md:text-3xl text-portfolio-gray-default font-medium mb-4 md:mb-6">
-            {translate("projects.title")}
-          </h2>
+          <div className="flex flex-row items-end gap-4">
+            <h2 className="text-2xl md:text-3xl font-medium text-portfolio-gray-default">
+              {translate("projects.title")}
+            </h2>
+            <p className="text-sm text-portfolio-gray-transparent md:hidden italic">
+              {translate("projects.mobile_helper_text")}
+            </p>
+          </div>
         </motion.div>
 
         <motion.div
@@ -54,7 +59,7 @@ export function ProjectsSection({ id }: ProjectsSectionProps) {
           viewport={{ margin: "-100px" }}
           className="transparent-card p-4 md:p-6 text-portfolio-gray-default backdrop-blur-sm border border-white/10 rounded-xl"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch">
             {projects.map((project) => (
               <motion.div
                 key={project.title}
@@ -62,6 +67,7 @@ export function ProjectsSection({ id }: ProjectsSectionProps) {
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 },
                 }}
+                className="h-full"
               >
                 <ProjectCard
                   {...project}

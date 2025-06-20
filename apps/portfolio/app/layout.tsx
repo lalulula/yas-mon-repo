@@ -1,4 +1,4 @@
-import { pretendard } from "@/lib/fonts";
+import { pretendard } from "@/src/fonts";
 import "@workspace/ui/globals.css";
 import "./globals.css";
 import { I18nProvider } from "@/components/providers/I18nProvider";

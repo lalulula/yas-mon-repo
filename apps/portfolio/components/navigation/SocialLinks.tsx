@@ -1,6 +1,6 @@
 "use client";
 
-import { socialLinks } from "@/lib/constants/social-links.const";
+import { socialLinks } from "@/src/dto/constants/social-links.const";
 
 export function SocialLinks() {
   const handleLinkClick = (url: string) => {

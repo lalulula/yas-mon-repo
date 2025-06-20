@@ -1,4 +1,7 @@
 export default {
+  sidebar: {
+    language: '언어'
+  },
   // Hero Section
   hero: {
     name: '김윤아',
@@ -35,7 +38,8 @@ export default {
   // Skills Section
   skills: {
     title: '기술',
-    proficiency: 'Proficiency'
+    proficiency: 'Proficiency',
+    mobile_helper_text: '카드를 터치하여 자세히 보기'
   },
 
   // Experience Section
@@ -61,6 +65,7 @@ export default {
     title: '프로젝트',
     github: 'GitHub 보기',
     demo: '데모 확인',
+    mobile_helper_text: '카드를 터치하여 자세히 보기',
     portfolio: {
       description: 'Next.js와 Tailwind CSS로 구축된 모던하고 반응형 포트폴리오',
       detailDescription:

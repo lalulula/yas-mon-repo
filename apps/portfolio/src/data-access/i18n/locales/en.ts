@@ -1,4 +1,7 @@
 export default {
+  sidebar: {
+    language: 'Language'
+  },
   // Hero Section
   hero: {
     name: 'Yunah Kim',
@@ -35,7 +38,8 @@ export default {
   // Skills Section
   skills: {
     title: 'Skills',
-    proficiency: 'Proficiency'
+    proficiency: 'Proficiency',
+    mobile_helper_text: 'Tap to view more'
   },
 
   // Experience Section
@@ -61,6 +65,7 @@ export default {
     title: 'Projects',
     github: 'View on GitHub',
     demo: 'Check Demo',
+    mobile_helper_text: 'Tap to view more',
     portfolio: {
       description:
         'A modern, responsive portfolio built with Next.js and Tailwind CSS',
