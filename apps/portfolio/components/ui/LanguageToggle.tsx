@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 export function LanguageToggle() {
-  const { i18n } = useTranslation();
+  const { i18n, t: translate } = useTranslation();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -19,13 +19,18 @@ export function LanguageToggle() {
   };
 
   return (
-    mounted && <motion.button
-      onClick={toggleLanguage}
-      className="fixed top-4 right-4 z-50 px-3 py-1.5 text-sm font-medium text-white bg-black/80 rounded-full hover:bg-black/90 transition-colors"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      {i18n.language === "en" ? "한국어" : "English"}
-    </motion.button>
+    mounted && (
+      <div className="w-full">
+        <h3 className="text-white/80 text-lg font-medium mb-3">{translate('sidebar.language')}</h3>
+        <motion.button
+          onClick={toggleLanguage}
+          className="w-full px-3 py-2 text-sm font-medium text-sidebar-deactivated bg-white/10 rounded-lg hover:text-white hover:bg-white/20 transition-colors text-left"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          {i18n.language === "en" ? "한국어" : "English"}
+        </motion.button>
+      </div>
+    )
   );
 } 

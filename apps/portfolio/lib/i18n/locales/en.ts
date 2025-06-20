@@ -1,4 +1,7 @@
 export default {
+  sidebar: {
+    language: 'Language'
+  },
   // Hero Section
   hero: {
     name: 'Yunah Kim',
