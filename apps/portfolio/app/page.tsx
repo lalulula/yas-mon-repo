@@ -7,13 +7,10 @@ import { SkillsSection } from "@/components/sections/SkillsSection";
 export default function Page() {
   return (
     <PortfolioLayout>
-      <>
-      {/* test comment */}
-        <AboutSection id="about" />
-        <SkillsSection id="skills" />
-        <ExperienceSection id="experience" />
-        <ProjectsSection id="projects" />
-      </>
+      <AboutSection id="about" />
+      <SkillsSection id="skills" />
+      <ExperienceSection id="experience" />
+      <ProjectsSection id="projects" />
     </PortfolioLayout>
   );
 }
