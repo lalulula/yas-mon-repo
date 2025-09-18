@@ -1,7 +1,7 @@
-import { NavigationMenu } from "../navigation/NavigationMenu";
-import { SocialLinks } from "../navigation/SocialLinks";
-import { LanguageToggle } from "../ui/LanguageToggle";
-import { ChevronLeft } from "lucide-react";
+import { NavigationMenu } from '../navigation/NavigationMenu';
+import { SocialLinks } from '../navigation/SocialLinks';
+import { LanguageToggle } from '../ui/LanguageToggle';
+import { ChevronLeft } from 'lucide-react';
 
 interface AppSidebarProps {
   onNavItemClick?: () => void;
@@ -9,7 +9,11 @@ interface AppSidebarProps {
   isMobile?: boolean;
 }
 
-export function AppSidebar({ onNavItemClick, onCloseMenu, isMobile }: AppSidebarProps) {
+export function AppSidebar({
+  onNavItemClick,
+  onCloseMenu,
+  isMobile
+}: AppSidebarProps) {
   const scrollToTop = () => {
     const topElement = document.getElementById('top');
     if (topElement) {

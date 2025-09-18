@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import type React from "react";
+import type React from 'react';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import { Menu } from "lucide-react";
-import { Header } from "../ui/Header";
-import { Button } from "@workspace/ui/components/button";
-import { HeroSection } from "../sections/HeroSection";
-import { AppSidebar } from "./AppSidebar";
+import { Menu } from 'lucide-react';
+import { Header } from '../ui/Header';
+import { Button } from '@workspace/ui/components/button';
+import { HeroSection } from '../sections/HeroSection';
+import { AppSidebar } from './AppSidebar';
 
 interface PortfolioLayoutProps {
   children: React.ReactNode;
@@ -27,8 +27,8 @@ export function PortfolioLayout({ children }: PortfolioLayoutProps) {
       }
     };
     checkIfMobile();
-    window.addEventListener("resize", checkIfMobile);
-    return () => window.removeEventListener("resize", checkIfMobile);
+    window.addEventListener('resize', checkIfMobile);
+    return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
   return (
@@ -50,12 +50,13 @@ export function PortfolioLayout({ children }: PortfolioLayoutProps) {
 
           {/* Sidebar - hidden on mobile unless menu is open */}
           <div
-            className={`${isMobile
-              ? isMobileMenuOpen
-                ? "absolute inset-y-0 left-0 z-40 transform translate-x-0 transition-transform duration-200 ease-in-out"
-                : "absolute inset-y-0 left-0 z-40 transform -translate-x-full transition-transform duration-200 ease-in-out"
-              : "relative"
-              }`}
+            className={`${
+              isMobile
+                ? isMobileMenuOpen
+                  ? 'absolute inset-y-0 left-0 z-40 transform translate-x-0 transition-transform duration-200 ease-in-out'
+                  : 'absolute inset-y-0 left-0 z-40 transform -translate-x-full transition-transform duration-200 ease-in-out'
+                : 'relative'
+            }`}
           >
             <AppSidebar
               onNavItemClick={() => isMobile && setIsMobileMenuOpen(false)}
@@ -74,9 +75,11 @@ export function PortfolioLayout({ children }: PortfolioLayoutProps) {
           )}
 
           {/* Main Content */}
-          <main className={`flex-1 overflow-y-auto overflow-x-hidden h-full scroll-smooth relative ${isMobile && isMobileMenuOpen ? 'z-20' : 'z-10'}`}>
+          <main
+            className={`flex-1 overflow-y-auto overflow-x-hidden h-full scroll-smooth relative ${isMobile && isMobileMenuOpen ? 'z-20' : 'z-10'}`}
+          >
             <div
-              className={`p-4 md:p-8 space-y-8 md:space-y-12 ${isMobile ? "pt-16" : ""}`}
+              className={`p-4 md:p-8 space-y-8 md:space-y-12 ${isMobile ? 'pt-16' : ''}`}
             >
               <HeroSection />
               {children}

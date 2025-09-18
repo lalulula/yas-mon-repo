@@ -1,9 +1,8 @@
-"use client"
+'use client';
 
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-
 
 interface SkillCardProps {
   name: string;
@@ -13,8 +12,8 @@ interface SkillCardProps {
 }
 
 export function SkillCard({ name, icon, color, level }: SkillCardProps) {
-  const { t: translate } = useTranslation()
-  const [isExpanded, setIsExpanded] = useState(false)
+  const { t: translate } = useTranslation();
+  const [isExpanded, setIsExpanded] = useState(false);
   const renderStars = () => {
     const stars = [];
     const fullStars = Math.floor(level);
@@ -34,8 +33,8 @@ export function SkillCard({ name, icon, color, level }: SkillCardProps) {
     return stars;
   };
   const handleClick = () => {
-    setIsExpanded(!isExpanded)
-  }
+    setIsExpanded(!isExpanded);
+  };
 
   return (
     <button
@@ -50,8 +49,11 @@ export function SkillCard({ name, icon, color, level }: SkillCardProps) {
       <p className="text-[10px] md:text-sm text-portfolio-gray-default font-regular break-words hyphens-auto leading-tight">
         {name}
       </p>
-      <div className={`absolute inset-0 bg-black/80 rounded transition-opacity duration-300 flex flex-col items-center justify-center ${isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-        }`}>
+      <div
+        className={`absolute inset-0 bg-black/80 rounded transition-opacity duration-300 flex flex-col items-center justify-center ${
+          isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+        }`}
+      >
         <div className="flex gap-1">{renderStars()}</div>
         <p className="text-[oklch(0.9851_0_0)] text-sm mt-2">
           {translate('skills.proficiency')}
