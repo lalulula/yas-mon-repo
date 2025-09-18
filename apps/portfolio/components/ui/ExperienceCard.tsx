@@ -1,7 +1,7 @@
-"use client"
+'use client';
 
-import Image from "next/image";
-import { useTranslation } from "react-i18next";
+import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
 interface ExperienceCardProps {
   company: string;
   position: string;
@@ -10,12 +10,18 @@ interface ExperienceCardProps {
   link: string;
   description_en: string;
   description_ko: string;
-
 }
 
-export function ExperienceCard({ company, position, period, logo, link, description_en, description_ko }: ExperienceCardProps) {
+export function ExperienceCard({
+  company,
+  position,
+  period,
+  logo,
+  link,
+  description_en,
+  description_ko
+}: ExperienceCardProps) {
   const { i18n } = useTranslation();
-
 
   return (
     <button
@@ -50,7 +56,7 @@ export function ExperienceCard({ company, position, period, logo, link, descript
               {position}
             </p>
             <p className="mt-2 font-regular text-portfolio-gray-default text-xs md:text-sm break-words whitespace-break-spaces">
-              {i18n.language === "ko" ? description_ko : description_en}
+              {i18n.language === 'ko' ? description_ko : description_en}
             </p>
           </div>
         </div>

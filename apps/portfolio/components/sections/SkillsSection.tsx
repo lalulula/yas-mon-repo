@@ -24,42 +24,45 @@ interface SkillsSectionProps {
 }
 
 export function SkillsSection({ id }: SkillsSectionProps) {
-  const { t: translate } = useTranslation()
+  const { t: translate } = useTranslation();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  return (mounted &&
-    <section id={id} className="scroll-mt-4 py-6 md:py-10">
-      <div className="flex flex-row items-end gap-4 ">
-        <h2 className="text-2xl md:text-3xl text-portfolio-gray-default font-medium mb-4 md:mb-6">
-          {translate('skills.title')}
-        </h2>
-        <p className="text-sm text-portfolio-gray-transparent mb-4 md:hidden italic">
-          {translate('skills.mobile_helper_text')}
-        </p></div>
+  return (
+    mounted && (
+      <section id={id} className="scroll-mt-4 py-6 md:py-10">
+        <div className="flex flex-row items-end gap-4 ">
+          <h2 className="text-2xl md:text-3xl text-portfolio-gray-default font-medium mb-4 md:mb-6">
+            {translate('skills.title')}
+          </h2>
+          <p className="text-sm text-portfolio-gray-transparent mb-4 md:hidden italic">
+            {translate('skills.mobile_helper_text')}
+          </p>
+        </div>
 
-      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 items-stretch">
-        {skills.map((skill, index) => (
-          <motion.div
-            key={skill.name}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.05 }}
-            className="h-full"
-          >
-            <SkillCard
-              name={skill.name}
-              icon={skill.icon}
-              color={skill.color}
-              level={skill.level}
-            />
-          </motion.div>
-        ))}
-      </div>
-    </section>
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 items-stretch">
+          {skills.map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
+              className="h-full"
+            >
+              <SkillCard
+                name={skill.name}
+                icon={skill.icon}
+                color={skill.color}
+                level={skill.level}
+              />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+    )
   );
 }
 

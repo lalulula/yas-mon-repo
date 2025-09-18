@@ -1,10 +1,10 @@
-"use client"
+'use client';
 
-import { getTechChipClasses } from "@/src/data-access/utils/colors";
-import { motion } from "framer-motion"
-import { ArrowUpRight } from "lucide-react"
-import { useState } from "react";
-import { ProjectDetailsModal } from "./ProjectDetailsModal";
+import { getTechChipClasses } from '@/src/data-access/utils/colors';
+import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import { useState } from 'react';
+import { ProjectDetailsModal } from './ProjectDetailsModal';
 
 interface ProjectCardProps {
   title: string;
@@ -15,7 +15,14 @@ interface ProjectCardProps {
   refLink?: string;
 }
 
-export default function ProjectCard({ title, description, technologies, detailDescription, githubLink, refLink }: ProjectCardProps) {
+export default function ProjectCard({
+  title,
+  description,
+  technologies,
+  detailDescription,
+  githubLink,
+  refLink
+}: ProjectCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
