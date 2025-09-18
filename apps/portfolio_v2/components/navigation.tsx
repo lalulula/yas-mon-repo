@@ -1,34 +1,34 @@
-"use client"
+'use client';
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react';
 
 interface NavigationProps {
-  activeSection: string
+  activeSection: string;
 }
 
 const sections = [
-  { id: "intro", label: "Introduction" },
-  { id: "work", label: "Work Experience" },
-  { id: "thoughts", label: "Recent Thoughts" },
-  { id: "connect", label: "Connect" },
-]
+  { id: 'intro', label: 'Introduction' },
+  { id: 'work', label: 'Work Experience' },
+  { id: 'thoughts', label: 'Recent Thoughts' },
+  { id: 'connect', label: 'Connect' }
+];
 
 export function Navigation({ activeSection }: NavigationProps) {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 1000)
-    return () => clearTimeout(timer)
-  }, [])
+    const timer = setTimeout(() => setIsVisible(true), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    })
-  }
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
 
-  if (!isVisible) return null
+  if (!isVisible) return null;
 
   return (
     <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
@@ -38,7 +38,9 @@ export function Navigation({ activeSection }: NavigationProps) {
             key={section.id}
             onClick={() => scrollToSection(section.id)}
             className={`group relative w-2 h-8 rounded-full transition-all duration-500 ${
-              activeSection === section.id ? "bg-foreground" : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
+              activeSection === section.id
+                ? 'bg-foreground'
+                : 'bg-muted-foreground/30 hover:bg-muted-foreground/60'
             }`}
             aria-label={`Navigate to ${section.label}`}
           >
@@ -49,5 +51,5 @@ export function Navigation({ activeSection }: NavigationProps) {
         ))}
       </div>
     </nav>
-  )
+  );
 }

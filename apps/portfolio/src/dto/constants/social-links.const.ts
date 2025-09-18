@@ -1,29 +1,29 @@
-import { Linkedin, Github, Phone, Mail } from "lucide-react";
+import { Linkedin, Github, Phone, Mail } from 'lucide-react';
 
 export const socialLinks = [
   {
-    label: "LinkedIn",
+    label: 'LinkedIn',
     icon: Linkedin,
-    url: "https://www.linkedin.com/in/yunah-kim-b0ba76232/",
+    url: 'https://www.linkedin.com/in/yunah-kim-b0ba76232/'
   },
   {
-    label: "GitHub",
+    label: 'GitHub',
     icon: Github,
-    url: "https://github.com/lalulula",
+    url: 'https://github.com/lalulula'
   },
   {
-    label: "GitHub-work",
+    label: 'GitHub-work',
     icon: Github,
-    url: "https://github.com/yunahya",
+    url: 'https://github.com/yunahya'
   },
   {
-    label: "Phone",
+    label: 'Phone',
     icon: Phone,
-    url: "tel:+82 10 4196 9170",
+    url: 'tel:+82 10 4196 9170'
   },
   {
-    label: "Email",
+    label: 'Email',
     icon: Mail,
-    url: "mailto:kxxyunah321@gmail.com",
-  },
+    url: 'mailto:kxxyunah321@gmail.com'
+  }
 ];

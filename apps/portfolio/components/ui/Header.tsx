@@ -1,5 +1,5 @@
-import type React from "react";
-import { X, Maximize2 } from "lucide-react";
+import type React from 'react';
+import { X, Maximize2 } from 'lucide-react';
 
 interface HeaderProps {
   children: React.ReactNode;

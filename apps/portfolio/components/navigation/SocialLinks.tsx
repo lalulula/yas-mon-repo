@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { socialLinks } from "@/src/dto/constants/social-links.const";
+import { socialLinks } from '@/src/dto/constants/social-links.const';
 
 export function SocialLinks() {
   const handleLinkClick = (url: string) => {
-    window.open(url, "_blank", "noopener,noreferrer");
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (

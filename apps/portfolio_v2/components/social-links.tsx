@@ -1,12 +1,19 @@
-import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
+import Link from 'next/link';
+import { Card, CardContent } from '@/components/ui/card';
 
 const socialLinks = [
-  { name: "GitHub", handle: "@felixmacaspac", url: "https://github.com/felixmacaspac" },
-  { name: "v0.dev", handle: "@felixmacaspac", url: "https://v0.dev/@felixmacaspac" },
-  { name: "HubSpot Community", handle: "@felixmacaspac", url: "#" },
-  { name: "LinkedIn", handle: "felixmacaspac", url: "https://linkedin.com/in/felixmacaspac" },
-]
+  {
+    name: 'GitHub(1)',
+    handle: '@yunahkim',
+    url: 'https://github.com/lalulula'
+  },
+  { name: 'GitHub(2)', handle: '@yunahkim', url: 'https://github.com/yunahya' },
+  {
+    name: 'LinkedIn',
+    handle: 'yunahkim',
+    url: 'https://www.linkedin.com/in/yunah-kim-b0ba76232/'
+  }
+];
 
 export function SocialLinks() {
   return (
@@ -19,12 +26,14 @@ export function SocialLinks() {
                 <div className="text-foreground group-hover:text-muted-foreground transition-colors duration-300">
                   {social.name}
                 </div>
-                <div className="text-sm text-muted-foreground">{social.handle}</div>
+                <div className="text-sm text-muted-foreground">
+                  {social.handle}
+                </div>
               </div>
             </CardContent>
           </Card>
         </Link>
       ))}
     </div>
-  )
+  );
 }
